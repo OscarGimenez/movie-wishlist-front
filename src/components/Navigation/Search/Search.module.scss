@@ -1,0 +1,24 @@
+// Variables
+$button-color: rgb(28, 105, 171);
+$hover-color: rgb(28, 105, 171);
+
+.Input {
+    width: 300px !important;
+}
+
+.Button {
+    border-color: $button-color;
+    transition: all 1.2s ease-in;
+
+    &:hover {
+        box-shadow: inset 0 0 0px 25px $hover-color;
+        transition: all 0.3s linear;
+    }
+}
+
+
+@media (max-width: 920px) {
+    .Input {
+        width: 180px !important;
+    }
+}
