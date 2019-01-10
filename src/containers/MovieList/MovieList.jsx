@@ -3,7 +3,14 @@ import React, { Component } from "react";
 import Hero from "../../components/Hero/Hero";
 import Card from "../../components/Card/Card";
 
-export default class MovieList extends Component {
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+
+class MovieList extends Component {
+  componentDidMount() {
+    this.props.initHomeMovies();
+  }
+
   render() {
     return (
       <>
@@ -22,3 +29,14 @@ export default class MovieList extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    initHomeMovies: () => dispatch(actions.setHomeMovies())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MovieList);

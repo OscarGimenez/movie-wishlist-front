@@ -1,0 +1,2 @@
+export const INIT_HOME_MOVIES = 'INIT_HOME_MOVIES';
+export const SET_HOME_MOVIES = 'SET_HOME_MOVIES';
