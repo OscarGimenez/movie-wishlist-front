@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
 import Input from "../../components/UI/Input/Input";
+import MobileHeaderAuth from "../../components/Auth/MobileHeaderAuth/MobileHeaderAuth";
+import WhoAreYou from "../../components/Auth/WhoAreYou/WhoAreYou";
+import InfoUsers from "../../components/Auth/InfoUsers/InfoUsers";
 
 import classes from "./Auth.module.scss";
 
@@ -119,21 +122,10 @@ class Auth extends Component {
       <div className="container">
         {authRedirect}
         {errorMessage}
+        <MobileHeaderAuth />
         <div className="row">
-          <div className="col-6">
-            <div className="card-body">
-              <img
-                id="img_person"
-                alt="Auth"
-                className={classes.Person}
-                src="https://visualpharm.com/assets/217/Life%20Cycle-595b40b75ba036ed117d9ef0.svg"
-              />
-              <h2 id="who_message" className={classes.HeaderAuth}>
-                Who are you ?
-              </h2>
-            </div>
-          </div>
-          <div className="col-6">
+          <WhoAreYou />
+          <div className="col">
             <form onSubmit={this.submitHandler}>
               <div className="col-auto my-1">
                 <label htmlFor="inputEmail" className={labelClasses.join(" ")}>
@@ -167,11 +159,7 @@ class Auth extends Component {
             </form>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12">
-            <p>My text: Give some users and passwords</p>
-          </div>
-        </div>
+        <InfoUsers />
       </div>
     );
   }

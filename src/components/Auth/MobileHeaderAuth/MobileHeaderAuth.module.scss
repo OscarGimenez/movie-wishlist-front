@@ -1,0 +1,10 @@
+.HeaderTextAuth {
+    color: #f8f9fa;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 767px) {
+    .MobileHeaderAuth {
+        display: none !important;
+    }
+}
