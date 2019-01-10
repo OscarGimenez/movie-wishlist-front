@@ -9,15 +9,12 @@ const card = props => {
         alt="Poster placeholder"
       />
       <div className="card-body">
-        <h5 className="card-title">Movie title</h5>
-        <p className="card-text">
-          Some text about the movie. Some text about the movie. Some text about
-          the movie. Some text about the movie. Some text about the movie. Some
-          text about the movie.
+        <h5 className="card-title">{props.title}</h5>
+        <p className="card-text">{props.description}
         </p>
       </div>
       <div className="card-footer">
-        <small className="text-muted">This is the place for the buttons</small>
+        <small className="text-muted">Release year: {props.year}</small>
       </div>
     </div>
   );

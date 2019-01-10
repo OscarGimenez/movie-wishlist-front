@@ -13,20 +13,26 @@ class MovieList extends Component {
 
   render() {
     
-    //TODO: AQUI PUEDO HACER EL FOREACH!!!! GUAU!!!!
-    console.log("ASDSD", this.props.movies);
+    // TODO: MAKE A SPINNER!
+    // let movies = <Spinner />;
+    let movies = null;
+    // if (!this.props.loading) {
+      if (this.props.movies) {
+        movies = this.props.movies.map(movie => (
+        <Card 
+        key={movie.code}
+        title={movie.title}
+        description={movie.description}
+        year={movie.year}/>
+      ));
+    }
 
     return (
       <>
         <Hero />
         <div className="container">
           <div className="card-columns">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {movies}
           </div>
         </div>
       </>
