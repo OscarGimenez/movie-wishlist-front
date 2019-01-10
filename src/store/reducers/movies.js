@@ -4,12 +4,11 @@ const initialState = {
     movies: null,
 }
 
-// FIXME: Hacerlo
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_HOME_MOVIES:
             return ({
-                movies: null
+                movies: action.response
             })
         default:
             return state;

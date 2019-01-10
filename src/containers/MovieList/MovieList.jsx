@@ -12,6 +12,10 @@ class MovieList extends Component {
   }
 
   render() {
+    
+    //TODO: AQUI PUEDO HACER EL FOREACH!!!! GUAU!!!!
+    console.log("ASDSD", this.props.movies);
+
     return (
       <>
         <Hero />
@@ -30,13 +34,19 @@ class MovieList extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    movies: state.movies
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
-    initHomeMovies: () => dispatch(actions.setHomeMovies())
+    initHomeMovies: () => dispatch(actions.initHomeMovies())
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(MovieList);

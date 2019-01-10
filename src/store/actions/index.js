@@ -1,4 +1,5 @@
 export {
-    setHomeMovies
+    setHomeMovies,
+    initHomeMovies
 }
 from './movies';
