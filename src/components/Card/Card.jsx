@@ -3,16 +3,21 @@ import React from "react";
 const card = props => {
   return (
     <div className="card">
-      <img className="card-img-top" src="..." alt="Card image cap" />
+      <img
+        className="card-img-top"
+        src="img/movie-poster-placeholder.jpg"
+        alt="Poster placeholder"
+      />
       <div className="card-body">
-        <h5 className="card-title">Card title</h5>
+        <h5 className="card-title">Movie title</h5>
         <p className="card-text">
-          This card has supporting text below as a natural lead-in to additional
-          content.
+          Some text about the movie. Some text about the movie. Some text about
+          the movie. Some text about the movie. Some text about the movie. Some
+          text about the movie.
         </p>
       </div>
       <div className="card-footer">
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">This is the place for the buttons</small>
       </div>
     </div>
   );

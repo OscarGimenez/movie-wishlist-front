@@ -22,10 +22,10 @@ export default class Navigation extends Component {
           <Logo />
           <Toggler />
           <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul className="navbar-nav mr-auto">
-              <TextLink title="Movies"/>
-              <TextLink title="My list"/>
-              <TextLink title="Log in"/>
+            <ul className="navbar-nav mr-auto">              
+              <TextLink link="/">Movies</TextLink>
+              <TextLink link="/wishlist">My list</TextLink>
+              <TextLink link="/login">Log in</TextLink>
             </ul>
             <ul className="navbar-nav ml-auto">
               <Search />
