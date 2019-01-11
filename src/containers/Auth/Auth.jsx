@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+
 import Input from "../../components/UI/Input/Input";
+import Submit from "../../components/UI/Submit/Submit";
 import MobileHeaderAuth from "../../components/Auth/MobileHeaderAuth/MobileHeaderAuth";
 import WhoAreYou from "../../components/Auth/WhoAreYou/WhoAreYou";
 import InfoUsers from "../../components/Auth/InfoUsers/InfoUsers";
-
-import classes from "./Auth.module.scss";
 
 class Auth extends Component {
   state = {
     controls: {
       email: {
+        label: "Email",
         elementType: "input",
-        elementConfig: {
-          type: "email",
-          placeholder: "Your Email"
-        },
+        type: "email",
+        placeholder: "Your Email",
         value: "",
         validation: {
           required: true,
@@ -26,11 +27,10 @@ class Auth extends Component {
         touched: false
       },
       password: {
+        label: "Password",
         elementType: "input",
-        elementConfig: {
-          type: "password",
-          placeholder: "Password"
-        },
+        type: "password",
+        placeholder: "Password",
         value: "",
         validation: {
           required: true,
@@ -39,27 +39,26 @@ class Auth extends Component {
         valid: false,
         touched: false
       }
-    },
-    isSignUp: true
+    }
   };
 
-  checkValidity(value, rules) {
-    let isValid = true;
+  // checkValidity(value, rules) {
+  //   let isValid = true;
 
-    if (rules.required) {
-      isValid = value.trim() !== "" && isValid;
-    }
+  //   if (rules.required) {
+  //     isValid = value.trim() !== "" && isValid;
+  //   }
 
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
+  //   if (rules.minLength) {
+  //     isValid = value.length >= rules.minLength && isValid;
+  //   }
 
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
+  //   if (rules.maxLength) {
+  //     isValid = value.length <= rules.maxLength && isValid;
+  //   }
 
-    return isValid;
-  }
+  //   return isValid;
+  // }
 
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
@@ -67,10 +66,10 @@ class Auth extends Component {
       [controlName]: {
         ...this.state.controls[controlName],
         value: event.target.value,
-        valid: this.checkValidity(
-          event.target.value,
-          this.state.controls[controlName].validation
-        ),
+        // valid: this.checkValidity(
+        //   event.target.value,
+        //   this.state.controls[controlName].validation
+        // ),
         touched: true
       }
     };
@@ -79,7 +78,11 @@ class Auth extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    console.log("Submitted");
+    //TODO: MAKE VALIDATION
+    this.props.auth(
+      this.state.controls.email.value,
+      this.state.controls.password.value
+    );
   };
 
   render() {
@@ -90,17 +93,19 @@ class Auth extends Component {
         config: this.state.controls[key]
       });
     }
+
     let form = formElementsArray.map(formElement => {
       return (
         <Input
           key={formElement.id}
-          elementType={formElement.config.elementType}
-          elementConfig={formElement.config.elementConfig}
+          id={formElement.id}
+          title={formElement.config.label}
+          type={formElement.config.elementType}
           value={formElement.config.value}
-          invalid={!formElement.config.valid}
-          shouldValidate={formElement.config.validation}
-          touched={formElement.config.touched}
-          change={event => this.inputChangedHandler(event, formElement.id)}
+          placeholder={formElement.config.placeholder}
+          handleChange={event =>
+            this.inputChangedHandler(event, formElement.id)
+          }
         />
       );
     });
@@ -116,8 +121,6 @@ class Auth extends Component {
       authRedirect = <Redirect to={this.props.authRedirectPath} />;
     }
 
-    const labelClasses = [classes.Label, "col-sm-2", "col-form-label"];
-
     return (
       <div className="container">
         {authRedirect}
@@ -127,35 +130,8 @@ class Auth extends Component {
           <WhoAreYou />
           <div className="col">
             <form onSubmit={this.submitHandler}>
-              <div className="col-auto my-1">
-                <label htmlFor="inputEmail" className={labelClasses.join(" ")}>
-                  Email
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="inputEmail"
-                    placeholder="Email"
-                  />
-                </div>
-              </div>
-              <div className="col-auto my-1">
-                <label
-                  htmlFor="inputPassword"
-                  className={labelClasses.join(" ")}
-                >
-                  Password
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="inputPassword"
-                    placeholder="Password"
-                  />
-                </div>
-              </div>
+              {form}
+              <Submit />
             </form>
           </div>
         </div>
@@ -165,4 +141,23 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error,
+    isAuthenticated: state.auth.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // auth: (email, password) => dispatch(actions.auth(email, password))
+    
+    auth: (email, password) => dispatch(actions.authStart(email, password))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Auth);

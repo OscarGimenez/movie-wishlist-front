@@ -1,65 +1,26 @@
 import React from "react";
 
-import classes from "./Input.css";
+import classes from "./Input.module.scss";
 
 const input = props => {
-  let inputElement = null;
-  const inputClasses = [classes.InputElement];
-
-  if (props.invalid && props.shouldValidate && props.touched) {
-      inputClasses.push(classes.Invalid);
-  }
-
-  switch (props.elementType) {
-    case "input":
-      inputElement = (
-        <input
-          className={inputClasses.join(' ')}
-          {...props.elementConfig}
-          value={props.value}
-          onChange={props.change}
-        />
-      );
-      break;
-    case "textarea":
-      inputElement = (
-        <textarea
-          className={inputClasses.join(' ')}
-          {...props.elementConfig}
-          value={props.value}
-          onChange={props.change}
-        />
-      );
-      break;
-    case "select":
-      inputElement = (
-        <select
-          className={inputClasses.join(' ')}
-          value={props.value}
-          onChange={props.change}
-        >
-          {props.elementConfig.options.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.displayValue}
-            </option>
-          ))}
-        </select>
-      );
-      break;
-    default:
-      inputElement = (
-        <input
-          className={inputClasses.join(' ')}
-          {...props.elementConfig}
-          value={props.value}
-        />
-      );
-  }
+  const labelClasses = [classes.Label, "col-sm-2", "col-form-label"];
 
   return (
-    <div className={classes.Input}>
-      <label>{props.label}</label>
-      {inputElement}
+    <div className="form-group">
+      <label htmlFor={props.name} className={labelClasses.join(" ")}>
+        {props.title}
+      </label>
+      <div className="input-group">
+        <input
+          className="form-control"
+          id={props.id}
+          name={props.title}
+          type={props.type}
+          value={props.value}
+          onChange={props.handleChange}
+          placeholder={props.placeholder}
+        />
+      </div>
     </div>
   );
 };

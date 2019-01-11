@@ -4,3 +4,13 @@
     padding-top:20px;
     color: #f8f9fa;
 }
+
+@media (max-width: 425px) {
+    .InfoUsers {
+        width: 80%;
+        margin: auto;
+        padding-top:20px;
+        color: #f8f9fa;
+        font-size: 10px;
+    }
+}

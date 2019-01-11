@@ -14,21 +14,21 @@ const infoUsers = props => {
           <table className="mt-2 table table-striped table-condensed">
             <thead className="thead-light">
               <tr>
-                <th>Username</th>
+                <th>Email</th>
                 <th>Password</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>spiderman</td>
+                <td>spiderman@gmail.com</td>
                 <td>stickywebs</td>
               </tr>
               <tr>
-                <td>ironman</td>
+                <td>ironman@gmail.com</td>
                 <td>powerbeams</td>
               </tr>
               <tr>
-                <td>superman</td>
+                <td>superman@gmail.com</td>
                 <td>flysohigh</td>
               </tr>
             </tbody>
