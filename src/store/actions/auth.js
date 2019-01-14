@@ -8,11 +8,12 @@ export const authStart = (email, password) => {
     }
 }
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token, userId, username) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         idToken: token,
-        userId: userId
+        userId: userId,
+        username: username
     }
 }
 
@@ -42,21 +43,8 @@ export const logoutSucceed = () => {
     }
 }
 
-// export const authCheckState = () => {
-//     return dispatch => {
-//         const token = localStorage.getItem('token');
-//         if (!token) {
-//             dispatch(logout());
-//         } else {
-//             const expirationDate = new Date(localStorage.getItem('expirationDate'));
-//             if (expirationDate <= new Date()) {
-//                 dispatch(logout());
-//             } else {
-//                 const userId = localStorage.getItem('userId');
-//                 dispatch(authSuccess(token, userId));
-//                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
-//             }
-
-//         }
-//     }
-// }
+export const authCheckState = () => {
+    return {
+        type: actionTypes.AUTH_START_AUTO_LOGIN
+    }
+}

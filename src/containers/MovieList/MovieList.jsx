@@ -8,9 +8,14 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
 class MovieList extends Component {
+
   componentDidMount() {
     this.props.initHomeMovies();
   }
+
+  addToWishlistHandler = movieCode => {
+    this.props.addToWishlist(this.props.username, movieCode);
+  };
 
   render() {
     let loader = null;
@@ -19,25 +24,26 @@ class MovieList extends Component {
     }
 
     let movies = null;
-     if (!this.props.loading && this.props.movies) {
+    if (!this.props.loading && this.props.movies) {
       movies = this.props.movies.map(movie => (
-        <Card 
-        key={movie.code}
-        title={movie.title}
-        description={movie.description}
-        poster={movie.poster}
-        year={movie.year}/>
+        <Card
+          key={movie.code}
+          title={movie.title}
+          description={movie.description}
+          poster={movie.poster}
+          year={movie.year}
+          addToWishlist={() => this.addToWishlistHandler(movie.code)}
+          isAuthenticated={this.props.isAuthenticated}
+        />
       ));
-     }
+    }
 
     return (
       <>
         <Hero />
         {loader}
         <div className="container">
-          <div className="card-columns">
-            {movies}
-          </div>
+          <div className="card-columns">{movies}</div>
         </div>
       </>
     );
@@ -47,13 +53,16 @@ class MovieList extends Component {
 const mapStateToProps = state => {
   return {
     movies: state.movies.movies,
-    loading: state.movies.loading
+    loading: state.movies.loading,
+    username: state.auth.username,
+    isAuthenticated: state.auth.token !== null
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    initHomeMovies: () => dispatch(actions.initHomeMovies())
+    initHomeMovies: () => dispatch(actions.initHomeMovies()),
+    addToWishlist: (username, movieCode) => dispatch(actions.addToWishlist(username, movieCode))
   };
 };
 

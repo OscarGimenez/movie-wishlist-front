@@ -4,14 +4,14 @@ export {
     checkAuthTimeout,
     logout,
     logoutSucceed,
-    
-    // setAuthRedirectPath,
-    // authCheckState
+    authCheckState
 }
 from './auth';
 
 export {
     setHomeMovies,
-    initHomeMovies
+    initHomeMovies,
+    addToWishlist,
+    addedToWishlist,
 }
 from './movies';

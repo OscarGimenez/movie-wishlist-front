@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import classes from "./Navigation.module.scss";
 
@@ -7,32 +7,42 @@ import Toggler from "./Toggler/Toggler";
 import TextLink from "./TextLink/TextLink";
 import Search from "./Search/Search";
 
-export default class Navigation extends Component {
-  render() {
-    let navClasses = [
-      classes.Navigation,
-      "navbar",
-      "navbar-expand-md",
-      "navbar-light",
-      "bg-light"
-    ];
-    return (
+const navigation = props => {
+  let navClasses = [
+    classes.Navigation,
+    "navbar",
+    "navbar-expand-md",
+    "navbar-light",
+    "bg-light"
+  ];
+
+  let authArea = <TextLink link="/login">Log in</TextLink>;
+  if (props.isAuthenticated) {
+    authArea = (
       <>
-        <nav className={navClasses.join(" ")}>
-          <Logo />
-          <Toggler />
-          <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul className="navbar-nav mr-auto">              
-              <TextLink link="/">Movies</TextLink>
-              <TextLink link="/wishlist">My list</TextLink>
-              <TextLink link="/login">Log in</TextLink>
-            </ul>
-            <ul className="navbar-nav ml-auto">
-              <Search />
-            </ul>
-          </div>
-        </nav>
+        <TextLink link="/wishlist">My list</TextLink>
+        <TextLink link="/logout">Logout</TextLink>
       </>
     );
   }
-}
+  //TODO: Search input
+  return (
+    <>
+      <nav className={navClasses.join(" ")}>
+        <Logo />
+        <Toggler />
+        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+          <ul className="navbar-nav mr-auto">
+            <TextLink link="/">Movies</TextLink>
+            {authArea}
+          </ul>
+          <ul className="navbar-nav ml-auto">
+            <Search />
+          </ul>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default navigation;

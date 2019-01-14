@@ -1,6 +1,20 @@
 import React from "react";
 
 const card = props => {
+  let addButton = null;
+  if (props.isAuthenticated) {
+    addButton = (
+      <div className="card-footer">
+        <button
+          onClick={props.addToWishlist}
+          className="btn btn-xs btn-danger"
+        >
+          <i className="fas fa-heart" /> Add to my wishlist
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="card">
       <img className="card-img-top" src={props.poster} alt={props.title} />
@@ -11,11 +25,7 @@ const card = props => {
       <div className="card-footer">
         <small className="text-muted">Release year: {props.year}</small>
       </div>
-      <div className="card-footer">
-        <a href="#" className="btn btn-xs btn-danger">
-          <i className="fas fa-heart" /> Add to my wishlist
-        </a>
-      </div>
+      {addButton}
     </div>
   );
 };

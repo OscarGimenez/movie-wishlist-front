@@ -118,7 +118,7 @@ class Auth extends Component {
 
     let authRedirect = null;
     if (this.props.isAuthenticated) {
-      authRedirect = <Redirect to={this.props.authRedirectPath} />;
+      authRedirect = <Redirect to={"/"} />;
     }
 
     return (
@@ -150,9 +150,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    // auth: (email, password) => dispatch(actions.auth(email, password))
-    
+  return {    
     auth: (email, password) => dispatch(actions.authStart(email, password))
   };
 };
