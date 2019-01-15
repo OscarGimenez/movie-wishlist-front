@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
 class MovieList extends Component {
-
   componentDidMount() {
     this.props.initHomeMovies();
   }
@@ -33,6 +32,7 @@ class MovieList extends Component {
           poster={movie.poster}
           year={movie.year}
           addToWishlist={() => this.addToWishlistHandler(movie.code)}
+          isLoading={movie.loading}
           isAuthenticated={this.props.isAuthenticated}
         />
       ));
@@ -54,6 +54,7 @@ const mapStateToProps = state => {
   return {
     movies: state.movies.movies,
     loading: state.movies.loading,
+    wishlistLoader: state.movies.wishlistLoader,
     username: state.auth.username,
     isAuthenticated: state.auth.token !== null
   };
@@ -62,7 +63,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     initHomeMovies: () => dispatch(actions.initHomeMovies()),
-    addToWishlist: (username, movieCode) => dispatch(actions.addToWishlist(username, movieCode))
+    addToWishlist: (username, movieCode) =>
+      dispatch(actions.addToWishlist(username, movieCode))
   };
 };
 

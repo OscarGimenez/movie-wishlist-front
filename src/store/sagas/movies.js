@@ -22,11 +22,7 @@ export function* setHomeMoviesSaga(action) {
 }
 
 export function* addToWishlistSaga(action) {
-    console.log("Saga addToWishlistSaga: INSERTING...");
-    yield delay(2000);
-    console.log("Saga addToWishlistSaga: Done...");
-    console.log(action.username);
-    console.log(action.movieCode);
+    yield delay(2000); // This is to simulate some delay on the Database
     const data = {
         username: action.username,
         movieCode: action.movieCode
@@ -35,7 +31,7 @@ export function* addToWishlistSaga(action) {
         yield axios
         .post('https://movie-wishlist-backend.appspot.com/user-movies/1.0/add', data);
         // .post('localhost:3000/user-movies/1.0/add', data);
-        yield put(actions.addedToWishlist());
+        yield put(actions.addedToWishlist(action.movieCode));
     } catch (err) {
         // TODO: Handle error
     }

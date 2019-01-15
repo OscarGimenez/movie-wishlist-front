@@ -1,9 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    movies: null,
-    loading: false,
-    wishlistLoader: false,
+    movies: [],
+    loading: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -19,16 +18,22 @@ const reducer = (state = initialState, action) => {
                 movies: action.response,
                 loading: false
             })
-            case actionTypes.ADD_TO_WISHLIST:
+        case actionTypes.ADD_TO_WISHLIST:
+            const updatedMoviesWithLoader = [...state.movies];            
+            const movieLoading = updatedMoviesWithLoader.filter((result) => result.code === action.movieCode);
+            movieLoading[0].loading = true;
             return ({
                 ...state,
-                wishlistLoader: true
+                movies: updatedMoviesWithLoader
             })
         case actionTypes.ADDED_TO_WISHLIST:
-            return ({
-                ...state,
-                wishlistLoader: false
-            })
+        const updatedMoviesWithoutLoader = [...state.movies];            
+        const movieUpdated = updatedMoviesWithoutLoader.filter((result) => result.code === action.movieCode);
+        movieUpdated[0].loading = false;
+        return ({
+            ...state,
+            movies: updatedMoviesWithoutLoader
+        })
         default:
             return state;
     }

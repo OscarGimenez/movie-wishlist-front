@@ -1,16 +1,22 @@
 import React from "react";
 
+import Loader from "../UI/WishlistLoader/WishlistLoader";
+
 const card = props => {
-  let addButton = null;
+  let button = <Loader />;
+  if (!props.isLoading) {
+    button = <button
+    onClick={props.addToWishlist}
+    className="btn btn-xs btn-danger"
+  >
+    <i className="fas fa-heart" /> Add to my wishlist
+  </button>;
+  }
+  let footer = null;
   if (props.isAuthenticated) {
-    addButton = (
+    footer = (
       <div className="card-footer">
-        <button
-          onClick={props.addToWishlist}
-          className="btn btn-xs btn-danger"
-        >
-          <i className="fas fa-heart" /> Add to my wishlist
-        </button>
+        {button}
       </div>
     );
   }
@@ -25,7 +31,7 @@ const card = props => {
       <div className="card-footer">
         <small className="text-muted">Release year: {props.year}</small>
       </div>
-      {addButton}
+      {footer}
     </div>
   );
 };

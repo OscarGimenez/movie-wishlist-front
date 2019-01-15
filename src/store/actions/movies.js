@@ -23,6 +23,7 @@ export const addToWishlist = (username, movieCode ) => {
 }
 export const addedToWishlist = (movieCode) => {
     return {
-        type: actionTypes.ADDED_TO_WISHLIST
+        type: actionTypes.ADDED_TO_WISHLIST,
+        movieCode: movieCode
     }
 }
