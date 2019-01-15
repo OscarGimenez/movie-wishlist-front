@@ -15,3 +15,9 @@ export {
     addedToWishlist,
 }
 from './movies';
+
+export {
+    initWishlist,
+    setWishlistMovies
+}
+from './wishlist';

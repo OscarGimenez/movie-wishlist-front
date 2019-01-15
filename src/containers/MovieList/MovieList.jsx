@@ -33,6 +33,7 @@ class MovieList extends Component {
           year={movie.year}
           addToWishlist={() => this.addToWishlistHandler(movie.code)}
           isLoading={movie.loading}
+          isInWishlist={movie.isInWishlist}
           isAuthenticated={this.props.isAuthenticated}
         />
       ));

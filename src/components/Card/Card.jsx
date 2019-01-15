@@ -4,6 +4,7 @@ import Loader from "../UI/WishlistLoader/WishlistLoader";
 
 const card = props => {
   let button = <Loader />;
+  //FIXME: Handle better this
   if (!props.isLoading) {
     button = <button
     onClick={props.addToWishlist}
@@ -11,6 +12,10 @@ const card = props => {
   >
     <i className="fas fa-heart" /> Add to my wishlist
   </button>;
+  }
+  
+  if (props.isInWishlist) {
+    button = <p>In wishlist!</p>;
   }
   let footer = null;
   if (props.isAuthenticated) {

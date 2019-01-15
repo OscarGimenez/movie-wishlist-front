@@ -30,6 +30,7 @@ const reducer = (state = initialState, action) => {
         const updatedMoviesWithoutLoader = [...state.movies];            
         const movieUpdated = updatedMoviesWithoutLoader.filter((result) => result.code === action.movieCode);
         movieUpdated[0].loading = false;
+        movieUpdated[0].isInWishlist = true;
         return ({
             ...state,
             movies: updatedMoviesWithoutLoader

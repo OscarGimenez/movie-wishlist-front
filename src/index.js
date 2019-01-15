@@ -12,13 +12,15 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import moviesReducer from './store/reducers/movies';
 import authReducer from './store/reducers/auth';
+import wishlistReducer from './store/reducers/wishlist';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import { watchAuth, watchMovies } from './store/sagas/index';
+import { watchAuth, watchMovies, watchWishlist } from './store/sagas/index';
 
 const reducer = combineReducers({
+    auth: authReducer,
     movies: moviesReducer,
-    auth: authReducer
+    wishlist: wishlistReducer
 })
 
 const sagaMiddleware = createSagaMiddleware();
@@ -27,6 +29,7 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddl
 
 sagaMiddleware.run(watchAuth);
 sagaMiddleware.run(watchMovies);
+sagaMiddleware.run(watchWishlist);
 
 ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'));
 
