@@ -5,7 +5,6 @@ import classes from "./Navigation.module.scss";
 import Logo from "./Logo/Logo";
 import Toggler from "./Toggler/Toggler";
 import TextLink from "./TextLink/TextLink";
-import Search from "./Search/Search";
 
 const navigation = props => {
   let navClasses = [
@@ -25,7 +24,7 @@ const navigation = props => {
       </>
     );
   }
-  //TODO: Search input
+  
   return (
     <>
       <nav className={navClasses.join(" ")}>
