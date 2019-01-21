@@ -12,8 +12,14 @@ State management:
 - Sagas
 
 Other information:
+- Scss
 - React-router
 - Firebase Auth
+
+###TODO:
+- [ ] Add the "search" functionality to the menu
+- [ ] Add the possibility of remove movies from the wishlist
+- [ ] Change the way movies display in the home page when added to the wishlist
 
 ## Available Scripts
 
