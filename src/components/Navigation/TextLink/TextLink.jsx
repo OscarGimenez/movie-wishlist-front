@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const textLink = props => {
   return (
-    <li className="nav-item active">
+    <li className="nav-item active" onClick={props.close}>
       <NavLink
         exact
         className="nav-link"

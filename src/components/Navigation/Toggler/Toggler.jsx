@@ -1,6 +1,14 @@
 import React from "react";
 
+import classes from "./Toggler.module.scss";
+
 const toggler = props => {
+  let burgerClasses = [classes.BurgerMenu, "dropdown-menu"];
+
+  if (props.burgerMenuDeployed) {
+    burgerClasses = [classes.BurgerMenu, "dropdown-menu", "show"];
+  }
+
   return (
     <div className="ml-auto">
       <button
@@ -11,9 +19,11 @@ const toggler = props => {
         aria-controls="navbarText"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        onClick={props.burgerMenuHandler}
       >
         <span className="navbar-toggler-icon" />
       </button>
+      <div className={burgerClasses.join(" ")}>{props.menuLinks}</div>
     </div>
   );
 };

@@ -22,5 +22,6 @@ export function* setWishlistMoviesSaga(action) {
         yield put(actions.setWishlistMovies(movies));
     } catch (err) {
         // TODO: Handle error
+        console.log(err);
     }
 }

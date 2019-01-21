@@ -15,26 +15,43 @@ const navigation = props => {
     "bg-light"
   ];
 
-  let authArea = <TextLink link="/login">Log in</TextLink>;
+  let menuLinks = (
+    <>
+      <TextLink close={props.burgerMenuCloserHandler} link="/">
+        Movies
+      </TextLink>
+      <TextLink close={props.burgerMenuCloserHandler} link="/login">
+        Log in
+      </TextLink>
+    </>
+  );
   if (props.isAuthenticated) {
-    authArea = (
+    menuLinks = (
       <>
-        <TextLink link="/wishlist">My list</TextLink>
-        <TextLink link="/logout">Logout</TextLink>
+        <TextLink close={props.burgerMenuCloserHandler} link="/">
+          Movies
+        </TextLink>
+        <TextLink close={props.burgerMenuCloserHandler} link="/wishlist">
+          My list
+        </TextLink>
+        <TextLink close={props.burgerMenuCloserHandler} link="/logout">
+          Logout
+        </TextLink>
       </>
     );
   }
-  
+
   return (
     <>
       <nav className={navClasses.join(" ")}>
         <Logo />
-        <Toggler />
+        <Toggler
+          burgerMenuHandler={props.burgerMenuHandler}
+          burgerMenuDeployed={props.burgerMenuDeployed}
+          menuLinks={menuLinks}
+        />
         <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-          <ul className="navbar-nav mr-auto">
-            <TextLink link="/">Movies</TextLink>
-            {authArea}
-          </ul>
+          <ul className="navbar-nav mr-auto">{menuLinks}</ul>
         </div>
       </nav>
     </>
