@@ -23,6 +23,9 @@ Other information:
 - [ ] Change the way movies display in the home page when added to the wishlist
 - [ ] Add tests
 
+# Installation
+Don't forget to `npm install` after clone this repo.
+
 ## Available Scripts
 
 In the project directory, you can run:
