@@ -3,17 +3,17 @@ Live Demo: https://movie-wishlist-60107.firebaseapp.com/
 React SPA application in which you can add movies to your wishlist.
 
 This app uses:
--Functional Components
--Class Components
--CSS Modules
+- Functional Components
+- Class Components
+- CSS Modules
 
 State management:
--Redux
--Sagas
+- Redux
+- Sagas
 
 Other information:
--React-router
--Firebase Auth
+- React-router
+- Firebase Auth
 
 ## Available Scripts
 
