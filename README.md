@@ -16,7 +16,7 @@ Other information:
 - React-router
 - Firebase Auth
 
-###TODO:
+### TODO:
 - [ ] Add the "search" functionality to the menu
 - [ ] Add the possibility of remove movies from the wishlist
 - [ ] Change the way movies display in the home page when added to the wishlist
@@ -37,5 +37,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
