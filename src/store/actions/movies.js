@@ -7,10 +7,9 @@ export const setHomeMovies = (payload) => {
     }
 }
 
-export const initHomeMovies = (payload) => {
+export const initHomeMovies = () => {
     return {
-        type: actionTypes.INIT_HOME_MOVIES,
-        payload: payload
+        type: actionTypes.INIT_HOME_MOVIES
     }
 }
 

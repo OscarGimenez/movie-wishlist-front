@@ -9,13 +9,13 @@ import axios from 'axios';
 
 import * as actions from '../actions/index';
 
-export function* setHomeMoviesSaga(action) {
+export function* setHomeMoviesSaga() {
     try {
         yield console.log('Trying to access backend');
-        const response = yield axios
-            .get('https://movie-wishlist-backend.appspot.com/movies/1.0/list/all');
+        // const response = yield axios
+        //     .get('https://movie-wishlist-backend.appspot.com/movies/1.0/list/all');
             // .get('http://localhost:3000/movies/1.0/list/all');
-        yield put(actions.setHomeMovies(response.data));
+        // yield put(actions.setHomeMovies(response.data));
     } catch (error) {
         if (error.response) {
             // The request was made and the server responded with a status code
