@@ -17,6 +17,7 @@ export function* setHomeMoviesSaga(action) {
             // .get('http://localhost:3000/movies/1.0/list/all');
         yield put(actions.setHomeMovies(response.data));
     } catch (err) {
+        console.log("Error comes");
         // TODO: Handle error
     }
 }
