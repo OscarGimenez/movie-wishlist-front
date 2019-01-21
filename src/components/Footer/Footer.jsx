@@ -7,7 +7,8 @@ const footer = props => {
   return (
     <footer className={footerClasses.join(" ")}>
       <div className="footer-copyright text-center py-3">
-        © 2019 Copyright: Óscar Giménez Aldabas.
+        Óscar Giménez Aldabas [2019]. React + Redux + NodeJS + Express +
+        Firebase + Google Cloud Platform.
       </div>
     </footer>
   );
