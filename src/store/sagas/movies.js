@@ -11,7 +11,7 @@ import * as actions from '../actions/index';
 
 export function* setHomeMoviesSaga(action) {
     try {
-
+        yield console.log('Trying to access backend');
         const response = yield axios
             .get('https://movie-wishlist-backend.appspot.com/movies/1.0/list/all');
             // .get('http://localhost:3000/movies/1.0/list/all');
