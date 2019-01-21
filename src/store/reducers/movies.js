@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
             })
         case actionTypes.ADD_TO_WISHLIST:
             const updatedMoviesWithLoader = [...state.movies];            
-            const movieLoading = updatedMoviesWithLoader.filter((result) => result.code === action.movieCode);
+            const movieLoading = updatedMoviesWithLoader.filter((result) => result.code === action.movie.code);
             movieLoading[0].loading = true;
             return ({
                 ...state,
@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
             })
         case actionTypes.ADDED_TO_WISHLIST:
         const updatedMoviesWithoutLoader = [...state.movies];            
-        const movieUpdated = updatedMoviesWithoutLoader.filter((result) => result.code === action.movieCode);
+        const movieUpdated = updatedMoviesWithoutLoader.filter((result) => result.code === action.movie.code);
         movieUpdated[0].loading = false;
         movieUpdated[0].isInWishlist = true;
         return ({

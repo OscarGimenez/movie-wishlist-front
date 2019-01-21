@@ -12,8 +12,8 @@ class MovieList extends Component {
     this.props.initHomeMovies();
   }
 
-  addToWishlistHandler = movieCode => {
-    this.props.addToWishlist(this.props.username, movieCode);
+  addToWishlistHandler = movie => {
+    this.props.addToWishlist(this.props.username, movie);
   };
 
   render() {
@@ -31,7 +31,7 @@ class MovieList extends Component {
           description={movie.description}
           poster={movie.poster}
           year={movie.year}
-          addToWishlist={() => this.addToWishlistHandler(movie.code)}
+          addToWishlist={() => this.addToWishlistHandler(movie)}
           isLoading={movie.loading}
           isInWishlist={movie.isInWishlist}
           isAuthenticated={this.props.isAuthenticated}
@@ -64,8 +64,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     initHomeMovies: () => dispatch(actions.initHomeMovies()),
-    addToWishlist: (username, movieCode) =>
-      dispatch(actions.addToWishlist(username, movieCode))
+    addToWishlist: (username, movie) =>
+      dispatch(actions.addToWishlist(username, movie))
   };
 };
 

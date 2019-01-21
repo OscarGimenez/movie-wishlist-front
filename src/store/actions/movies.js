@@ -14,16 +14,16 @@ export const initHomeMovies = (payload) => {
     }
 }
 
-export const addToWishlist = (username, movieCode ) => {
+export const addToWishlist = (username, movie ) => {
     return {
         type: actionTypes.ADD_TO_WISHLIST,
         username: username,
-        movieCode: movieCode
+        movie: movie
     }
 }
-export const addedToWishlist = (movieCode) => {
+export const addedToWishlist = (movie) => {
     return {
         type: actionTypes.ADDED_TO_WISHLIST,
-        movieCode: movieCode
+        movie: movie
     }
 }
