@@ -36,9 +36,6 @@ const navigation = props => {
             <TextLink link="/">Movies</TextLink>
             {authArea}
           </ul>
-          <ul className="navbar-nav ml-auto">
-            <Search />
-          </ul>
         </div>
       </nav>
     </>
