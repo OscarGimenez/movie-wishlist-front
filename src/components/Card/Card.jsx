@@ -6,24 +6,28 @@ const card = props => {
   let button = <Loader />;
   //FIXME: Handle better this
   if (!props.isLoading) {
-    button = <button
-    onClick={props.addToWishlist}
-    className="btn btn-xs btn-danger"
-  >
-    <i className="fas fa-heart" /> Add to my wishlist
-  </button>;
+    button = (
+      <button onClick={props.addToWishlist} className="btn btn-xs btn-danger">
+        <i className="fas fa-heart" /> Add to my wishlist
+      </button>
+    );
   }
-  
+
   if (props.isInWishlist) {
     button = <p>In wishlist!</p>;
   }
+
+  if (props.wishlistArea) {
+    button = (
+      <button onClick={props.removeFromWishlist} className="btn btn-xs btn-danger">
+        <i className="fas fa-trash-alt" /> Remove
+      </button>
+    );
+  }
+
   let footer = null;
   if (props.isAuthenticated) {
-    footer = (
-      <div className="card-footer">
-        {button}
-      </div>
-    );
+    footer = <div className="card-footer">{button}</div>;
   }
 
   return (

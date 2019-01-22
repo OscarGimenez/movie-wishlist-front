@@ -13,7 +13,12 @@ class Wishlist extends Component {
     this.props.initWishlist(this.props.username);
   }
 
+  removeFromWishlistHandler = movie => {
+    this.props.removeMovieFromWishlist(this.props.username, movie);
+  };
+
   render() {
+    let wishlistArea = true;
     let movies = null;
     if (!this.props.loading && this.props.movies) {
       movies = this.props.movies.map(movie => (
@@ -23,9 +28,9 @@ class Wishlist extends Component {
           description={movie.description}
           poster={movie.poster}
           year={movie.year}
-          addToWishlist={() => this.addToWishlistHandler(movie.code)}
+          removeFromWishlist={() => this.removeFromWishlistHandler(movie)}
           isLoading={movie.loading}
-          isInWishlist={movie.isInWishlist}
+          wishlistArea={wishlistArea}
           isAuthenticated={this.props.isAuthenticated}
         />
       ));
@@ -54,13 +59,15 @@ const mapStateToProps = state => {
   return {
     movies: state.wishlist.movies,
     username: state.auth.username,
-    loading: state.wishlist.loading
+    loading: state.wishlist.loading,
+    isAuthenticated: state.auth.token !== null
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    initWishlist: (username) => dispatch(actions.initWishlist(username))
+    initWishlist: (username) => dispatch(actions.initWishlist(username)),
+    removeMovieFromWishlist: (username, movies) => dispatch(actions.removeMovieFromWishlist(username, movies)),
   };
 };
 

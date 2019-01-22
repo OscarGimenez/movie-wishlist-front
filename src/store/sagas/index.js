@@ -13,7 +13,8 @@ import {
     addToWishlistSaga
 } from './movies'
 import {
-    setWishlistMoviesSaga
+    setWishlistMoviesSaga,
+    removeMovieFromWishlistSaga
 } from './wishlist'
 
 
@@ -33,4 +34,5 @@ export function* watchMovies() {
 
 export function* watchWishlist() {
     yield takeEvery(actionTypes.INIT_WISHLIST, setWishlistMoviesSaga);
+    yield takeEvery(actionTypes.WISHLIST_REMOVE_MOVIE, removeMovieFromWishlistSaga);
 }

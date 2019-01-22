@@ -13,3 +13,17 @@ export const setWishlistMovies = (movies) => {
         movies: movies
     }
 }
+
+export const removeMovieFromWishlist = (username, movies) => {
+    return {
+        type: actionTypes.WISHLIST_REMOVE_MOVIE,
+        username: username,
+        movies: movies
+    }
+}
+
+export const removeMovieFromWishlistEnding = () => {
+    return {
+        type: actionTypes.WISHLIST_REMOVE_MOVIE_ENDING,
+    }
+}

@@ -25,3 +25,21 @@ export function* setWishlistMoviesSaga(action) {
         console.log(err);
     }
 }
+
+export function* removeMovieFromWishlistSaga(action) {
+    try {
+        const data = {
+            username: action.username,
+            movie: action.movie
+        };
+        yield delay(1000);
+        // TODO: REMOVE MOVIE
+        const response = yield axios
+            .post('https://movie-wishlist-backend.appspot.com/user-movies/1.0/remove', data);
+        console.log(response);
+        yield put(actions.removeMovieFromWishlistEnding(true));
+    } catch (err) {
+        // TODO: Handle error
+        console.log(err);
+    }
+}

@@ -18,6 +18,8 @@ from './movies';
 
 export {
     initWishlist,
-    setWishlistMovies
+    setWishlistMovies,
+    removeMovieFromWishlist,
+    removeMovieFromWishlistEnding
 }
 from './wishlist';

@@ -18,6 +18,16 @@ const reducer = (state = initialState, action) => {
                 movies: action.movies,
                 loading: false
             })
+        case actionTypes.WISHLIST_REMOVE_MOVIE:
+            return ({
+                ...state,
+                loading: true
+            })
+        case actionTypes.WISHLIST_REMOVE_MOVIE_ENDING:
+            return ({
+                ...state,
+                loading: false
+            })
 
         default:
             return state;
