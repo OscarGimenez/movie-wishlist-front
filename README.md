@@ -18,9 +18,9 @@ Other information:
 - Firebase Auth
 
 ### TODO:
-- [ ] Add the "search" functionality to the menu
+- [ ] Fix bug: When a movie is added, loader gets stuck
 - [ ] Add the possibility of remove movies from the wishlist
-- [ ] Change the way movies display in the home page when added to the wishlist
+- [ ] Add the "search" functionality to the menu
 - [ ] Add tests
 
 # Installation
