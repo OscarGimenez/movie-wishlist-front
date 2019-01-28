@@ -12,7 +12,7 @@ import * as actions from '../actions/index';
 export function* setHomeMoviesSaga() {
     try {
         const response = yield axios
-            .get('https://movie-wishlist-backend.appspot.com/movies/1.0/list/all');
+            .get('https://movie-wishlist-backend.appspot.com/api/movies/1.0/list/all');
         yield put(actions.setHomeMovies(response.data));
     } catch (err) {
         // TODO: Handle error
@@ -28,7 +28,7 @@ export function* addToWishlistSaga(action) {
     };
     try {
         yield axios
-        .post('https://movie-wishlist-backend.appspot.com/user-movies/1.0/add', data);
+        .post('https://movie-wishlist-backend.appspot.com/api/user-movies/1.0/add', data);
         yield put(actions.addedToWishlist(action.movie));
     } catch (err) {
         // TODO: Handle error
