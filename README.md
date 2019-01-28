@@ -1,7 +1,5 @@
 Live Demo: https://movie-wishlist-60107.firebaseapp.com/
 
-* Database write permissions not enabled at this moment. Ask me before for a full demo :alien:.
-
 # Movie Wishlist 
 React SPA application in which you can add movies to your wishlist.
 
